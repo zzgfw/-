@@ -7,6 +7,12 @@ header = {
 url = input('Enter the url: ')
 page = requests.get(url, headers = header).content
 
+def save_img(img_addr):
+    response = requests.get(img_addr, headers = header).content
+    name = img_addr[-12:-4]
+    with open(name + '.png', 'wb') as file:
+        file.write(response)
+        
 soup = BeautifulSoup(page, 'html.parser')
 linkPool = soup.find_all('td', class_='tal')
 for links in linkPool:
