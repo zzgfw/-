@@ -16,7 +16,7 @@ page = open_url(input('Enter the url: '))
 #保存到本地（正常）
 def save_img(img_addr):
     response = requests.get(img_addr, headers = header).content
-    name = img_addr[-12:-4]
+    name = img_addr[-8:-4]
     with open(name + '.png', 'wb') as file:
         file.write(response)
 
