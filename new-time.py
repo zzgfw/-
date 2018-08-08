@@ -11,7 +11,8 @@ def open_url(url):
     page = requests.get(url, headers = header).content
     return page
 
-page = open_url(input('Enter the url: '))
+n = input('Enter the page number which you want to save: ')
+page = open_url('http://cc.etet.men/thread0806.php?fid=8&search=&page=' + n)
 
 #保存到本地（正常）
 def save_img(img_addr):
@@ -33,7 +34,7 @@ soup = BeautifulSoup(page, 'html.parser')
 linkPool = soup.find_all('td', class_='tal')
 i = 1    #控制跳过前几项
 for links in linkPool:
-    if i <= 13:
+    if i <= 6:
         i = i +1
         continue
     else:
