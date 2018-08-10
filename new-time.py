@@ -17,9 +17,9 @@ page = open_url('http://cc.etet.men/thread0806.php?fid=8&search=&page=' + n)
 #保存到本地（正常）
 def save_img(img_addr):
     response = requests.get(img_addr, headers = header).content
-    name = img_addr[-12:-4]
+    name = img_addr[-12:]
     name = name.replace('/', '_')
-    with open(name + '.png', 'wb') as file:
+    with open(name, 'wb') as file:
         file.write(response)
 
 #解析子页面（正常）
@@ -29,6 +29,7 @@ def find_img(address):
     for img_link in img_links:
         save_img(img_link.get('data-src'))
     print('Matched Successfully!')
+    print()
 
 #main（正常）
 soup = BeautifulSoup(page, 'html.parser')
