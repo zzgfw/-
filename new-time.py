@@ -17,7 +17,8 @@ page = open_url('http://cc.etet.men/thread0806.php?fid=8&search=&page=' + n)
 #保存到本地（正常）
 def save_img(img_addr):
     response = requests.get(img_addr, headers = header).content
-    name = img_addr[-8:-4]
+    name = img_addr[-12:-4]
+    name = name.replace('/', '_')
     with open(name + '.png', 'wb') as file:
         file.write(response)
 
@@ -46,3 +47,6 @@ for links in linkPool:
         os.chdir(title)
         find_img(address)
         os.chdir(homeDir)    #自动归档
+print()
+print('-Mission Completed-')
+input('Press any key to exit...')
