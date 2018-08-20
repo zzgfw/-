@@ -25,7 +25,10 @@ def find_img(address):
     soup_sec = BeautifulSoup(open_url(address), 'html.parser')
     img_links = soup_sec.find_all('input', attrs={'type':'image'})
     for img_link in img_links:
-        save_img(img_link.get('data-src'))
+        try:
+            save_img(img_link.get('data-src'))
+        except:
+            save_img(img_link.get('src'))
     print('Matched Successfully!\n')
 
 #main（正常）
