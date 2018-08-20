@@ -12,7 +12,7 @@ def open_url(url):
     return page
 
 n = input('Enter the page number which you want to save: ')
-page = open_url('http://cc.etet.men/thread0806.php?fid=8&search=&page=' + n)
+page = open_url('http://ab.cbcb.us/thread0806.php?fid=8&search=&page=' + n)
 
 #保存到本地（正常）
 def save_img(img_addr):
@@ -41,7 +41,7 @@ for links in linkPool:
     else:
         link = links.find('h3')
         title = link.get_text()
-        address = 'http://cc.etet.men/' + link.a.get('href')
+        address = 'http://ab.cbcb.us/' + link.a.get('href')
         print(title)
         os.mkdir(title)
         os.chdir(title)
@@ -49,4 +49,4 @@ for links in linkPool:
         os.chdir(homeDir)    #自动归档
 print()
 print('-Mission Completed-')
-input('Press any key to exit...')
+input('Press Enter to exit...')
