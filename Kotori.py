@@ -32,18 +32,20 @@ def find_img(address):
     print('Matched Successfully!\n')
 
 #main（正常）
+keywords = input('Please enter the keywords of TITLE: ')
+
 print('<Searching&Downloading...>\n\n ***Don`t Kill This Process***')
 print()
 for n in range(100, 0, -1):
     n = str(n)
-    page = open_url('http://ab.cbcb.us/thread0806.php?fid=8&search=&page=' + n)
+    page = open_url('http://ee.cbcb.us/thread0806.php?fid=8&search=&page=' + n)
     
     soup = BeautifulSoup(page, 'html.parser')
-    linkPool = soup.find_all('a', text=re.compile(r'^小鳥醬'))
+    linkPool = soup.find_all('a', text=re.compile(r"+keywords+"))
     
     for links in linkPool:
         title = links.get_text()
-        address = 'http://ab.cbcb.us/' + links.get('href')
+        address = 'http://ee.cbcb.us/' + links.get('href')
         print('>>>'+title)
         os.mkdir(title)
         os.chdir(title)
