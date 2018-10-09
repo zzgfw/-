@@ -41,7 +41,7 @@ for n in range(100, 0, -1):
     page = open_url('http://ee.cbcb.us/thread0806.php?fid=8&search=&page=' + n)
     
     soup = BeautifulSoup(page, 'html.parser')
-    linkPool = soup.find_all('a', text=re.compile(r"+keywords+"))
+    linkPool = soup.find_all('a', text=re.compile(r'%s' %(keywords)))
     
     for links in linkPool:
         title = links.get_text()
